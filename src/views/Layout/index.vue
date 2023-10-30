@@ -1,0 +1,43 @@
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import TabBar, { type TabBarItem } from '@/components/TabBar/index.vue';
+
+  const tabbars = ref<TabBarItem[]>([
+    {
+      title: '首页',
+      to: {
+        name: '/home'
+      },
+      icon: 'home-o'
+    },
+    {
+      title: '设置',
+      to: {
+        name: '/setting'
+      },
+      icon: 'setting-o'
+    },
+    {
+      title: '关于我',
+      to: {
+        name: '/profile'
+      },
+      icon: 'user-o'
+    }
+  ]);
+</script>
+
+<template>
+  <van-nav-bar :title="$route.meta.title" />
+  <div class="main-page">
+    <RouterView v-slot="{ Component }" v-if="$route.meta.keepAlive">
+      <keep-alive>
+        <component :is="Component" :key="$route.path" />
+      </keep-alive>
+    </RouterView>
+    <RouterView v-if="!$route.meta.keepAlive" :key="$route.path"></RouterView>
+  </div>
+  <TabBar :data="tabbars" />
+</template>
+
+<style scoped></style>
