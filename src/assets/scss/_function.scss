@@ -1,0 +1,5 @@
+// 根据750的设计稿，需要除以2
+// 如果根据375的设计则不需要
+@function pxtorem($px) {
+  @return calc($px / 2 / 37.5) * 1rem;
+}
