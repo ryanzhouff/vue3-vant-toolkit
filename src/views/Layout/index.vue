@@ -2,6 +2,7 @@
   import { ref } from 'vue';
   import TabBar, { type TabBarItem } from '@/components/TabBar/index.vue';
 
+  const arrowVisible = ref(true);
   const tabbars = ref<TabBarItem[]>([
     {
       title: '首页',
@@ -32,7 +33,7 @@
 </script>
 
 <template>
-  <van-nav-bar :title="$route.meta.title" />
+  <van-nav-bar :title="$route.meta.title" :left-arrow="arrowVisible" @click-left="$router.go(-1)" />
   <div class="main-page">
     <RouterView v-slot="{ Component }" v-if="$route.meta.keepAlive">
       <keep-alive>
