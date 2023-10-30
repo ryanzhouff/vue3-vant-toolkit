@@ -28,7 +28,7 @@
 
   const active = ref(defaultActive);
 
-  const handleTabBarChange = (value) => {
+  const handleTabBarChange = (value: number) => {
     emits('tabBarChange', value);
   };
 </script>

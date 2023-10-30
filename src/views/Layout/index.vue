@@ -33,7 +33,7 @@
 </script>
 
 <template>
-  <van-nav-bar :title="$route.meta.title" :left-arrow="arrowVisible" @click-left="$router.go(-1)" />
+  <van-nav-bar :title="$route.meta.title as string" :left-arrow="arrowVisible" @click-left="$router.go(-1)" />
   <div class="main-page">
     <RouterView v-slot="{ Component }" v-if="$route.meta.keepAlive">
       <keep-alive>

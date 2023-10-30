@@ -5,12 +5,12 @@
   const username = ref('');
   const password = ref('');
 
-  const onLoginFormSubmit = (values) => {
+  const onLoginFormSubmit = (values: object) => {
     console.log(values);
     //login();
   };
 
-  const onFailed = (errorInfo) => {
+  const onFailed = (errorInfo: object) => {
     console.log(errorInfo);
   };
 </script>
