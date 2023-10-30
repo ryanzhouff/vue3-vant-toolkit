@@ -15,6 +15,15 @@ export default defineConfig({
       resolvers: [VantResolver()]
     })
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: '',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
