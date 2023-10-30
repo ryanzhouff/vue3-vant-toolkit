@@ -1,11 +1,12 @@
 import { fileURLToPath, URL } from 'node:url';
-
+import path from 'node:path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from '@vant/auto-import-resolver';
 import viteImagemin from 'vite-plugin-imagemin';
+import DefineOptions from 'unplugin-vue-define-options/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
     Components({
       resolvers: [VantResolver()]
     }),
+    DefineOptions(),
     viteImagemin({
       gifsicle: {
         optimizationLevel: 7,
@@ -54,7 +56,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('src', import.meta.url))
     }
   },
   css: {
@@ -74,10 +76,11 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        chunkFileNames: 'static/js/[name]-[hash].js',
+        chunkFileNames: () => {
+          return 'static/js/[name]-[hash].js';
+        },
         entryFileNames: 'static/js/[name]-[hash].js',
-        assetFileNames: function (chunkInfo) {
-          console.log(chunkInfo);
+        assetFileNames: function () {
           // 存放图片css等资源
           return 'assets/[name]-[hash].[ext]';
         },
