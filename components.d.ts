@@ -15,7 +15,12 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TabBar: typeof import('./src/components/TabBar/index.vue')['default']
+    VanButton: typeof import('vant/es')['Button']
+    VanCellGroup: typeof import('vant/es')['CellGroup']
+    VanField: typeof import('vant/es')['Field']
+    VanForm: typeof import('vant/es')['Form']
     VanNavBar: typeof import('vant/es')['NavBar']
+    VanNumberKeyboard: typeof import('vant/es')['NumberKeyboard']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
   }
