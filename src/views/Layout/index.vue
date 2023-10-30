@@ -25,6 +25,10 @@
       icon: 'user-o'
     }
   ]);
+
+  const onTabBarChange = (value: number) => {
+    console.log(value);
+  };
 </script>
 
 <template>
@@ -37,7 +41,7 @@
     </RouterView>
     <RouterView v-if="!$route.meta.keepAlive" :key="$route.path"></RouterView>
   </div>
-  <TabBar :data="tabbars" />
+  <TabBar :data="tabbars" @tabBarChange="onTabBarChange" />
 </template>
 
 <style scoped></style>

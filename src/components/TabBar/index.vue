@@ -22,10 +22,14 @@
     activeColor: '#4197ff'
   });
 
+  const emits = defineEmits<{
+    (e: 'tabBarChange', value: number): void;
+  }>();
+
   const active = ref(defaultActive);
-  console.log(active);
+
   const handleTabBarChange = (value) => {
-    console.log(value);
+    emits('tabBarChange', value);
   };
 </script>
 
