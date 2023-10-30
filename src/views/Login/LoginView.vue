@@ -1,4 +1,7 @@
 <script setup lang="ts">
+  defineOptions({
+    name: 'LoginView'
+  });
   //import { login } from '@/services/user/login.service';
   import { ref } from 'vue';
 
